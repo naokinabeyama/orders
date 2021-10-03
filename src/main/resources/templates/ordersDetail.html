@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../ordersDetail.css">
+<title>受発注詳細画面</title>
+</head>
+<body>
+	<p class="title-1">
+        <label>受発注詳細</label>
+    </p>
+
+    <p class="title-2">
+        <label>■受注情報</label>
+    </p>
+    <table class="table-1">
+        <tr class="show-id">
+            <th class="show-id-title"><label>受注ID</label></th>
+            <td class="show-id-id"><label>[[${orders.id}]]</label></td>
+        </tr>
+        <tr class="show-id">
+            <th class="show-state-title"><label>受注ステータス</label></th>
+            <td class="show-state-state"><label>[[${orders.getOrdersStatusEntity().getVal()}]]</label></td>
+        </tr>
+        <tr class="show-id">
+            <th class="show-name-title"><label>顧客名</label></th>
+            <td class="show-name-name"><label>[[${orders.clientName}]]</label></td>
+        </tr>
+
+        <tr class="show-id">
+            <th class="show-address-title"><label>顧客住所</label></th>
+            <td class="show-address-address"><label>[[${orders.address}]]</label></td>
+        </tr>
+        <tr class="show-id">
+            <th class="tell-title"><label>顧客携帯番号</label></th>
+            <td class="tell"><label>[[${orders.tell}]]</label></td>
+        </tr>
+
+        <tr class="show-id">
+            <th class="create-title">
+                <label>登録日時</label>
+            </th>
+            <td class="create-time"><label>[[${date}]]</label></td>
+        </tr>
+        <tr class="show-id">
+            <th class="update-title">更新日時</th>
+            <td class="update-time"><label>[[${update}]]</label></td>
+        </tr>
+    </table>
+
+    <div class="table-2">
+
+        <p class="title-4">
+            <label>■商品情報</label>
+        </p>
+
+        <table class="show-table">
+            <div class="show-item">
+
+                <tr>
+                    <th class="item-name"><label>商品名</label></th>
+                    <td class="item-text"><label>[[${orders.itemName}]]</label></td>
+                </tr>
+
+                <tr>
+                    <th><label>商品単価</label></th>
+                    <td><label>[[${orders.price}]]</label></td>
+                </tr>
+
+            </div>
+        </table>
+    </div>
+
+    <div class="table-3">
+        <p class="title-3">
+            <label>■発注情報</label>
+        </p>
+        <table class="show-order">
+            <tr>
+                <th class="company-title"><label>発注先会社ID</label></th>
+                <td class="company-id"><label>[[${orders.placesEntity.companiesEntity.companyId}]]</label></td>
+            </tr>
+
+            <tr>
+                <th><label>発注先会社名</label></th>
+                <td><label>[[${orders.placesEntity.companiesEntity.companyName}]]</label></td>
+            </tr>
+
+            <tr>
+                <th><label>発注商品名</label></th>
+                <td><label>[[${orders.placesEntity.placeItemName}]]</label></td>
+            </tr>
+
+            <tr>
+                <th><label>発注数</label></th>
+                <td><label>[[${orders.placesEntity.placeQuantity}]]</label></td>
+            </tr>
+            <tr>
+                <th><label>発注単価</label></th>
+                <td><label>[[${orders.placesEntity.placeItemPrice}]]</label></td>
+            </tr>
+        </table>
+    </div>
+	<form method="POST">
+	    <div class="button">
+	    	<input type="hidden" name="ordersId" th:value="${orders.id}">
+	        
+	        <th:block th:if="${bool} == true">
+	        	<button class="delete" onclick="return check()" formaction="/orders/doDelete">削除</button>
+	        </th:block>
+	        <th:block th:if="${bool} == false">
+	        	<button disabled class="delete">削除</button>
+	        </th:block>
+	        
+	        <button formmethod="GET" formaction="/orders" form="back" class="back">戻る</button>
+	        
+	        <th:block th:if="${bool} == true">
+	        	<button formaction="/orders/fix" class="create">受注確定</button>
+	        </th:block>
+	        <th:block th:if="${bool} == false">
+	        	<button disabled class="create">受注確定</button>
+	        </th:block>
+	        
+	        <th:block th:if="${bool} == true">
+	        	<input type="submit" formmethod="GET" formaction="/orders/update" value="更新" class="update">
+	        </th:block>
+	       <th:block th:if="${bool} == false">
+	        	<button disabled class="update">更新</button>
+	       </th:block>
+	    </div>
+	   
+    </form>
+    <form id="back"></form>
+	<script>
+			function check() {
+				if (window.confirm('削除してよろしいでしょうか')) {
+					return true;
+				} else {
+					return false;
+				}
+			}
+	</script>
+</body>
+</html>

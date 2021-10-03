@@ -1,0 +1,164 @@
+@charset "UTF-8";
+table {
+    border-collapse: collapse;
+    border-spacing: 0px;
+    table-layout: fixed;
+}
+
+td,th {
+    border: 1px solid #000000;
+    text-align: left;
+    /* border-bottom: none; */
+    /* border: solid 1px;
+    border-right: 0px; */
+}
+
+th {
+    /* border-right: 1px solid #000000; */
+    background-color: #87CEFA;
+    font-weight: normal;
+}
+
+.title-1, .title-2, .title-4 {
+    margin-left: 30px;
+}
+
+
+.show-id-title {
+    width: 200px;
+}
+
+.show-id {
+    float: left;
+}
+
+.show-id-id {
+    width: 250px;
+    border-right: none;
+}
+
+.show-name-title {
+    width: 200px;
+}
+
+.show-name-name {
+    width: 250px;
+}
+
+.show-state-title {
+    width: 200px;
+}
+
+.show-state-state {
+    width: 250px;
+    border-right: none;
+}
+
+.show-address-title {
+    width: 200px;
+    border-top: none;
+}
+
+.show-address-address {
+    width: 706px;
+    border-top: none;
+}
+
+.tell-title {
+    width: 200px;
+    border-top: none;
+}
+
+.tell {
+    width: 250px;
+    border-top: none;
+}
+
+.create-title, .update-title {
+    width: 200px;
+}
+
+.create-time, .update-time {
+    width: 250px;
+}
+
+.create-title, .update-time, .update-title {
+    border-top: none;
+}
+
+.create-time {
+    border-right: none;
+    border-top: none;
+}
+
+.show-table {
+    margin-left: 50px;
+}
+
+.table-1 {
+    margin-left: 50px;
+}
+
+.table-2 {
+    float: left;
+    margin-top: 60px;
+}
+
+.table-3 {
+    float: right;
+    margin-top: 60px;
+    margin-right: 100px;
+}
+
+.show-order {
+    margin-left: 30px;
+}
+
+.item-name {
+    width: 200px;
+}
+
+.item-text {
+    width: 300px;
+}
+
+.item-price {
+    border-top: none;
+}
+
+.company-title {
+    width: 200px;
+}
+
+.company-id {
+    width: 400px;
+}
+
+
+.button {
+    /* float: right; */
+    clear: both;
+    text-align: right;
+    margin-right: 100px;
+    padding-top: 60px;
+}
+
+.delete, .back, .update {
+    width: 80px;
+}
+
+.create {
+    width: 100px;
+}
+
+.delete {
+    margin-right: 60px;
+}
+
+.back {
+    margin-right: 60px;
+}
+
+.create {
+    margin-right: 60px;
+}

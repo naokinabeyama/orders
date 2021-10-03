@@ -1,0 +1,328 @@
+@charset "UTF-8";
+.message-area {
+    text-align: center;
+    background-color: #87CEFA;
+    margin-bottom: 30px;
+}
+
+.login-message-area {
+    text-align: center;
+    background-color: #87CEFA;
+    margin-top: 80px;
+    margin-bottom: 30px;
+}
+
+.message {
+    text-align: center;
+}
+
+.title {
+    margin-top: 20px;
+    margin-left: 100px;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.registration-form {
+    margin-left: 300px;
+}
+
+.update-form {
+    margin-left: 120px; 
+}
+
+.form-id, .form-name, .form-check {
+    margin-right: 65px;
+}
+
+.form-date, .form-count, .form-tel {
+    margin-right: 50px;
+}
+
+.first-name, .first-date {
+    margin-right: 15px;
+}
+
+.first-date, .last-date {
+    width: 165px;
+}
+
+input[type=checkbox] {
+    width: 20px;
+    height: 20px;
+}
+
+.form-text {
+    margin-right: 20px;
+    float: left;
+}
+
+textarea {
+    resize: none;
+    width: 340px;
+    height: 150px;
+}
+
+.button {
+    margin-left: 600px;
+}
+
+.button2 {
+    margin-left: 700px;
+}
+
+.back-button {
+    margin-right: 20px;
+}
+
+.show-delete-button {
+    margin-right: 20px;
+}
+
+.back-button, .update-button, .create-button, .login-button, .delete-button, .show-delete-button, .search-button {
+    width: 70px;
+}
+
+.registration-button {
+    margin-left: 180px;
+}
+
+.create-button {
+    margin-left: 60px;
+}
+
+.login-form {
+    margin-left: 620px;
+    margin-top: 40px;
+}
+
+.mall {
+    margin-right: 15px;
+}
+
+.password {
+    margin-right: 45px;
+}
+
+.login-button {
+    margin-left: 130px;
+}
+
+.delete-text {
+    margin-left: 125px;
+}
+
+.delete-id, .delete-name, .delete-check{
+    margin-right: 100px;
+}
+
+.delete-date, .delete-count, .delete-tel {
+    margin-right: 85px;
+}
+
+.delete-comment {
+    margin-right: 50px;
+}
+
+.comment {
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+
+.logout{
+    float: right;
+    margin-right: 400px;
+}
+
+.guest-name {
+    float: right;
+    margin-right: 30px;
+}
+
+.login-name {
+    margin-left: 100px;
+    margin-top: 15px;
+    float: left;
+    
+}
+
+.success {
+    margin-right: 400px;
+    margin-top: 15px;
+    float: right;
+    clear: both; 
+    width: 83px;
+}
+
+.index-form {
+    margin-left: 100px;
+    margin-top: 100px;
+}
+
+.search {
+    font-weight: bold;
+}
+
+.index-text-top {
+    margin-bottom: 20px;
+}
+
+.index-id {
+    margin-right: 57px;
+}
+
+.index-id-text {
+    width: 100px;
+}
+
+.index-state {
+    margin-right: 18px;
+}
+
+.index-count-select {
+    width: 107px;
+    height: 22px;
+}
+
+.index-price {
+    margin-left: 31px;
+    margin-right: 40px;
+}
+
+.index-firstprice-text {
+    width: 65px;
+    margin-right: 5px;
+    margin-left: 2px;
+}
+
+.index-lastprice-text {
+    width: 65px;
+    margin-left: 5px;
+}
+
+
+.index-tel {
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+.index-tel-text {
+    width: 170px;
+}
+
+.index-company {
+    margin-left: 25px;
+    margin-right: 20px;
+}
+
+.index-day-text {
+    width: 125px;
+}
+
+.index-date {
+    margin-left: 25px;
+    margin-right: 20px;
+}
+
+.index-date-text {
+    width: 230px;
+}
+
+.search-button {
+    margin-left: 950px;
+}
+
+.border {
+    border: solid 0.5px black;
+    width: 1020px;
+    margin: 30px 0;
+}
+
+.index-index {
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+
+
+.table-index {
+    border-collapse: collapse;
+    border-spacing: 0px;
+    /* width: 1020px; */
+    table-layout: fixed;
+
+}
+
+.yoyakuid {
+    text-align: center;
+    width: 110px;
+}
+
+.state {
+    text-align: center;
+    width: 100px;
+}
+
+.day {
+    text-align: center;
+    width: 150px;
+}
+
+.price {
+    text-align: center;
+    width: 100px;
+}
+
+.name {
+    text-align: center;
+    width: 130px;
+}
+
+.yoyakuday {
+    text-align: center;
+    width: 150px;
+}
+
+.tell {
+    text-align: center;
+    width: 160px;
+}
+
+.show {
+    text-align: center;
+    width: 100px;
+}
+
+td,th {
+    border: 1px solid #000000;
+    text-align: left;
+    /* border: solid 1px;
+    border-right: 0px; */
+}
+
+th {
+    background-color: #87CEFA;
+    font-weight: normal;
+}
+
+ul {
+    list-style: none;
+    margin-left: 480px;
+    margin-top: 40px;
+}
+
+li {
+    display: inline;
+    margin-right: 10px;
+}
+
+
+
+
+.title-1, .title-2, .title-4 {
+    margin-left: 30px;
+}
+
+.show-1-1, .show-1-2, .show-1-3, .show-2-1, .show-2-2 {
+    margin-left: 40px;
+}

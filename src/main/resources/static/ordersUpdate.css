@@ -1,0 +1,68 @@
+@charset "UTF-8";
+
+body {
+	width: 60%;
+}
+
+:focus {
+    outline: none;
+}
+
+table input, table select {
+	border: none;
+	width: 253px;
+}
+
+table th {
+	width: 120px;
+}
+
+table td {
+	width: 250px;
+}
+
+.bold {
+	font-size: 18px;
+	line-height: 1.3333;
+	font-weight: bold;
+}
+
+table {
+	border-collapse: collapse;
+	margin-left: 18px;
+	border-color: black;
+}
+
+th {
+    background-color:#8DB4E2;
+    text-align: left;
+    font-weight: normal;
+}
+
+.address {
+	width:380px;
+}
+
+.address input{
+	width: 380px;
+}
+
+.companyId {
+	width: 250px;
+}
+
+.button {
+	margin-left: 70%;
+}
+
+.button-back {
+	margin-right: 10px;
+	height: 23px;
+	width: 70px;
+}
+
+.button-update {
+	margin-left: 10px;
+	height: 23px;
+	width: 70px;
+}

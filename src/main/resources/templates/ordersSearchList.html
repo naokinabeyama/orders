@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../ordersSearchList.css">
+<title>受発注検索一覧</title>
+</head>
+<body>
+	<button class="logout">ログアウト</button>
+
+    <div class="guest-name">
+        <a href="">ユーザー名</a>
+    </div>
+    <div class="title">
+        <label>受発注検索一覧</label>
+    </div>
+
+    <button class="success">新規登録</button>
+    
+    <div class="login-name">
+        <label>ようこそ「ユーザー名」様</label>
+    </div>
+    
+
+
+    <div class="index-form">
+
+        <p class="search">
+            <label>検索</label>
+        </p>
+        <div class="">
+	        <div th:if = "${form}" th:object = "${form}">
+	    		<p th:if = "${#fields.hasErrors('priceFrom')}" th:errors = "*{priceFrom}"></p>
+	    	</div>
+	        <div th:if = "${form}" th:object = "${form}">
+	    		<p th:if = "${#fields.hasErrors('priceTo')}" th:errors = "*{priceTo}"></p>
+	    	</div>
+	    	<div th:if = "${form}" th:object = "${form}">
+	    		<p th:if = "${#fields.hasErrors('clientName')}" th:errors = "*{clientName}"></p>
+	    	</div>
+	    	
+        </div>
+
+        <form method="GET">
+            <div class="index-text-top">
+               <label class="index-id">受注ID:</label>
+                <select class="index-id-text" name="orderId">
+                	<option value="0">未選択</option>
+                    <option th:each="ids:${ordersId}" th:value="${ids.id}" th:selected="${form.orderId} == ${ids.id}">[[${ids.id}]]</option>
+                </select>
+
+                <label class="index-price">単価：</label>
+                <input type="text" name="priceFrom" th:value="${form.priceFrom}" class="index-firstprice-text">
+                ~
+                <input type="text" name="priceTo" th:value="${form.priceTo}" class="index-lastprice-text">
+	                <label class="index-company">発注先会社名：</label>
+	                <select class="index-id-text" name="companyId"> 
+	                    <option value="0" hidden="未選択">未選択</option>
+	                    <option th:each="companies:${company}" th:value="${companies.companyId}">[[${companies.companyName}]]</option>
+	                </select>
+
+                
+            </div>
+
+            <div class="index-text-bottom">
+                <label class="index-state">ステータス：</label>
+                
+                <select class="index-count-select" name="status">
+				     <option value=0 hidden="未選択">未選択</option>
+				     <option th:if="${orderStatusEntity}" th:each="orderStatus:${orderStatusEntity}" th:value="${orderStatus.code}">[[${orderStatus.val}]]</option>
+ 				</select>
+
+                <label class="index-tel">顧客名：</label>
+                <input type="text" name="clientName" th:value="${form.clientName}" class="index-tel-text">
+            
+                <label class="index-date">受発注登録日：</label>
+                <input type="radio" name="orderDateSort" value=false th:checked="${form.orderDateSort == false}">降順
+                <input type="radio" name="orderDateSort" value=true th:checked="${form.orderDateSort == true}">昇順
+                
+            </div>
+            <!--/* 
+	            <button type="submit" formaction="/orders" class="search-button">
+	            	検索
+	            </button>
+             */-->
+             <input type="submit" formaction = "/orders" value = "検索" class="search-button">
+        </form>
+
+        <div class="border"></div>
+
+        <div class="index-index">
+            <label>一覧</label>
+        </div>
+
+        <table class="table-index">
+            <tr>
+                <th class="yoyakuid">
+                    <label>受注ID</label>
+                </th>
+
+                <th class="state">
+                    <label>ステータス</label>
+                </th>
+
+                <th class="day">
+                    <label>商品名</label>
+                </th>
+
+                <th class="price">
+                    <label>商品単価</label>
+                </th>
+
+                <th class="name">
+                    <label>顧客名</label>
+                </th>
+
+                <th class="yoyakuday">
+                    <label>発注先会社名</label>
+                </th>
+
+                <th class="tell">
+                    <label>受発注登録日</label>
+                </th>
+
+                <th class="show">
+                    <label>詳細</label>
+                </th>
+            </tr>
+
+            <tr th:if="${entityList}" th:each="entitys, time:${entityList}">
+                <td class="id">
+                    [[${entitys.id}]]
+                </td>
+				 
+                <td >
+                    [[${entitys.getOrdersStatusEntity().getVal()}]]
+                </td>
+				
+                
+                <td>
+                    [[${entitys.itemName}]]
+                </td>
+
+                <td>
+                    [[${entitys.price}]]
+                </td>
+
+                <td>
+                    [[${entitys.clientName}]]
+                </td>
+
+                <td>
+                    [[${entitys.placesEntity.companiesEntity.companyName}]]
+                </td>
+
+                <td>
+                    [[${date[time.index]}]]
+                </td>
+
+                <td>
+                    <a th:href="@{/orders/detail(ordersId=(${entitys.id}))}">詳細を見る</a>
+            </tr>
+
+        </table>
+
+    </div>
+
+	
+    <ul th:if="${entityList.totalPages}>1" th:method="get" class="page">
+       	<li style="display : inline" th:each="i : ${#numbers.sequence(0, entityList.totalPages-1)}">
+        	<span th:if="${i}==${entityList.number}" th:text="${i + 1}"></span>
+            <a th:if="${i}!=${entityList.number}" th:href="@{${url}(page=${i},orderId=${form.orderId},status=${form.status},
+            	priceFrom=${form.priceFrom},priceTo=${form.priceTo},clientName=${form.clientName},companyId=${form.companyId},orderDateSort=${form.orderDateSort})}" th:text="${i + 1}"></a>
+       	</li>
+     </ul>
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>受発注更新画面</title>
+    <link th:href="@{/ordersUpdate.css}" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <div class="bold">
+        <label>受発注更新</label>
+    </div>
+
+    <form method="POST">
+        <br>
+        <label>■受注情報</label>
+        <table border="1">
+            <tr>
+                <th><label>受注ID</label></th>
+                <td>[[${orders.id}]]</td>
+            </tr>
+            <tr>
+                <th><label for="clientName">顧客名</label></th>
+                <td><input type="text" name="clientName" th:value="${orders.clientName}"></td>
+            </tr>
+            <tr>
+                <th><label for="tell">顧客電話番号</label></th>
+                <td><input type="text" name="tell" th:value="${orders.tell}"></td>
+            </tr>
+        </table>
+        <table border="1">
+                <tr>
+                    <th><label for="address">顧客住所</label></th>
+                    <td class="address"><input type="text" name="address" th:value="${orders.address}"></td>
+                </tr>
+        </table>
+        <br>
+        <label>■商品情報</label>
+        <table border="1">
+            <tr>
+                <th><label for="itemName">商品名</label></th>
+                <td><input type="text" name="itemName" th:value="${orders.itemName}"></td>
+            </tr>
+            <tr>
+                <th><label for="itemPrice">商品単価</label></th>
+                <td><input type="text" name="itemPrice" th:value="${orders.price}"></td>
+            </tr>
+        </table>
+        <br>
+        <label>■発注情報</label>
+        <table border="1">
+            <tr>
+                <th><label for="companyId">発注先会社ID</label></th>
+                <td><select name="companyId" class="companyId">
+                        <option>[[${orders.placesEntity.companiesEntity.companyId}]]:[[${orders.placesEntity.companiesEntity.companyName}]]</option>
+                    	<option th:each="companys : ${company}">[[${companys.companyId}]]:[[${companys.companyName}]]</option>
+                    </select></td>
+            </tr>
+            <tr>
+                <th><label for="placeItemName">発注商品名</label></th>
+                <td><input type="text" name="placeItemName" th:value="${orders.placesEntity.companiesEntity.companyName}"></td>
+            </tr>
+            <tr>
+                <th><label for="placeQuantity">発注数</label></th>
+                <td><input type="text" name="placeQuantity" th:value="${orders.placesEntity.placeQuantity}"></td>
+            </tr>
+            <tr>
+                <th><label for="placeItemPrice">発注単価</label></th>
+                <td><input type="text" name="placeItemPrice" th:value="${orders.placesEntity.placeItemPrice}"></td>
+            </tr>
+        </table>
+        <br>
+        <br>
+        <div class="button">
+        	<button formmethod="GET" type="submit" name="ordersId" th:value="${orders.id}" formaction="/orders/detail" form="back" class="button-back">
+                	戻る
+            </button>
+            <input type="hidden" name="orderId" th:value="${orders.id}">
+            <input type="submit" formaction="/orders/doUpdate" value="更新" class="button-update">
+        </div>
+    </form>
+
+    <form id="back"></form>
+</body>
+
+</html>

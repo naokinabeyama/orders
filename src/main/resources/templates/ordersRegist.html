@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>受発注登録画面</title>
+	<link th:href="@{/ordersRegist.css}" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+	<div class="bold">
+		<label>受発注登録</label>
+	</div>
+
+	<div class="message">
+	    <div th:if = "${form}" th:object = "${form}">
+	    		<p th:if = "${#fields.hasErrors('clientName')}" th:errors = "*{clientName}"></p>
+	    </div>
+	    <div th:if = "${form}" th:object = "${form}">
+	    		<p th:if = "${#fields.hasErrors('tell')}" th:errors = "*{tell}"></p>
+	    </div>
+	    <div th:if = "${form}" th:object = "${form}">
+	    		<p th:if = "${#fields.hasErrors('address')}" th:errors = "*{address}"></p>
+	    </div>
+	    <div th:if = "${form}" th:object = "${form}">
+	    		<p th:if = "${#fields.hasErrors('itemName')}" th:errors = "*{itemName}"></p>
+	    </div>
+	    <div th:if = "${form}" th:object = "${form}">
+	    		<p th:if = "${#fields.hasErrors('itemPrice')}" th:errors = "*{itemPrice}"></p>
+	    </div>
+	    <div th:if = "${form}" th:object = "${form}">
+	    		<p th:if = "${#fields.hasErrors('companyId')}" th:errors = "*{companyId}"></p>
+	    </div>
+    	<div th:if = "${form}" th:object = "${form}">
+	    		<p th:if = "${#fields.hasErrors('placeQuantity')}" th:errors = "*{placeQuantity}"></p>
+	    </div>
+	    <div th:if = "${form}" th:object = "${form}">
+	    		<p th:if = "${#fields.hasErrors('placeItemPrice')}" th:errors = "*{placeItemPrice}"></p>
+	    </div>
+	    <div th:if = "${message}">[[${message}]]</div>
+    </div>
+
+	<form method="POST">
+		<br>
+		<label>■受注情報</label>
+		<table border="1">
+			<tr>
+				<th><label for="clientName">顧客名</label></th>
+				<td><input type="text" name="clientName" id="clientName"></td>
+			</tr>
+			<tr class="bottom-delete">
+				<th><label for="tell">顧客電話番号</label></th>
+				<td><input type="text" name="tell" id="tell"></td>
+			</tr>
+		</table>
+		<table border="1">
+			<tr>
+				<th><label for="address"></label>顧客住所</th>
+				<td class="address"><input type="text" name="address" id="address"></td>
+			</tr>
+		</table>
+		<br>
+		<label>■商品情報</label>
+		<table border="1">
+			<tr>
+				<th><label for="itemName">商品名</label></th>
+				<td><input type="text" name="itemName" id="itemName"></td>
+			</tr>
+			<tr class="bottom-delete">
+				<th><label for="itemPrice">商品単価</label></th>
+				<td><input type="text" name="itemPrice" id="itemPrice"></td>
+			</tr>
+		</table>
+		<br>
+		<br>
+		<label>■発注情報</label>
+		<table border="1">
+			<tr class="bottom-delete">
+				<th><label for="companyId">発注先会社ID</label></th>
+				<td><select name="companyId" class="companyId">
+						<option value=-1>未選択</option>
+						<option th:if=${companiesEntityList} th:each="entityList : ${companiesEntityList}" th:value="${entityList.companyId}">[[${entityList.companyId}]]:[[${entityList.companyName}]]</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<th><label for="placeItemName">発注商品名</label></th>
+				<td><input type="text" name="placeItemName" id="placeItemName"></td>
+			</tr>
+			<tr>
+				<th><label for="placeQuantity">発注数</label></th>
+				<td><input type="text" name="placeQuantity" id="placeQuantity"></td>
+			</tr>
+			<tr>
+				<th><label for="placeItemPrice">発注単価</label></th>
+				<td><input type="text" name="placeItemPrice" id="placeItemPrice"></td>
+			</tr>
+		</table>
+		<br>
+		<br>
+		<div class="button">
+			<input formmethod="GET" type="submit" form="back" formaction="/orders" value="戻る" class="button-back">
+			<input type="submit" onclick="return check()" formaction="/orders/doRegister" value="登録" class="button-register">
+		</div>
+	</form>
+
+	<form id="back"></form>
+
+	<script>
+		function check() {
+			if (window.confirm('登録してよろしいでしょうか')) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+	</script>
+</body>
+
+</html>
